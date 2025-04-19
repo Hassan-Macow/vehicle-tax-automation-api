@@ -23,7 +23,7 @@ app.add_middleware(
 # Download model from Google Drive
 def download_model():
     if not os.path.exists("best.pt"):
-        print("Downloading model with gdown...")
+        print("Downloading model from Google Drive with gdown...")
         url = "https://drive.google.com/uc?id=1YiHtOJMuN3zt1JnyOmADwemU_Sm4751D"
         gdown.download(url, "best.pt", quiet=False)
 
