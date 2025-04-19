@@ -4,6 +4,8 @@ import cv2
 import numpy as np
 from ultralytics import YOLO
 import easyocr
+import os
+import requests
 
 app = FastAPI()
 
@@ -14,6 +16,20 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+
+# Download model from Google Drive
+def download_model():
+    if not os.path.exists("best.pt"):
+        print("Downloading model from Google Drive...")
+        url = "https://drive.google.com/uc?export=download&id=1YiHtOJMuN3zt1JnyOmADwemU_Sm4751D"
+        r = requests.get(url)
+        with open("best.pt", "wb") as f:
+            f.write(r.content)
+
+download_model()
+
 
 model = YOLO("best.pt")  # Trained YOLOv8 model
 reader = easyocr.Reader(['en'], gpu=False)
