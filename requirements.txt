@@ -5,3 +5,4 @@ numpy
 easyocr
 python-multipart
 ultralytics
+gdown
