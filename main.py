@@ -6,6 +6,7 @@ from ultralytics import YOLO
 import easyocr
 import os
 import requests
+import gdown
 
 app = FastAPI()
 
